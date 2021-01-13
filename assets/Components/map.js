@@ -6,11 +6,12 @@ const TOKEN_DEAD = '.';
 export default function () {
     const [map, setMap] = useState(new Map());
 
-    const init = (d) => {
+    const scale = (d) => {
         const temp = new Map();
+        const ns = parseInt(d);
 
-        for (let y = 0; y < d; ++y) {
-            for (let x = 0; x < d; ++x) {
+        for (let y = 0; y < ns; ++y) {
+            for (let x = 0; x < ns; ++x) {
                 temp.set(`${x}:${y}`, TOKEN_DEAD);
             }
         }
@@ -83,7 +84,7 @@ export default function () {
     return [
         map, {
             set,
-            init,
+            scale,
             checkNeighbours
         }
     ]

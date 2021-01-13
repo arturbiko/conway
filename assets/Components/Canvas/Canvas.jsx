@@ -23,6 +23,13 @@ const Canvas = ({map, settings, setToken}) => {
     }, []);
 
     useEffect(() => {
+        drawGrid(
+            canvasRef.current,
+            settings.d
+        );
+    }, [settings.d])
+
+    useEffect(() => {
         draw(
             map,
             canvasRef.current,

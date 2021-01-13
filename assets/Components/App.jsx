@@ -5,12 +5,16 @@ import useMap from './map';
 import Control from "./Control";
 
 const App = () => {
-    const [settings, setSettings] = useSettings({d: 5, s: 100});
+    const [settings, setSettings] = useSettings({d: 10, s: 100});
     const [map, actions] = useMap();
 
     useEffect(() => {
-        actions.init(settings.d);
+        actions.scale(settings.d);
     }, []);
+
+    useEffect(() => {
+        actions.scale(settings.d);
+    }, [settings]);
 
     return (
         <div className="container-fluid">
@@ -27,6 +31,7 @@ const App = () => {
                 <div className="col-12 col-md-6">
                     <Control
                         values={settings}
+                        setSettings={setSettings}
 
                         start={() => {
                             actions.checkNeighbours()

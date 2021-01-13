@@ -18,8 +18,8 @@ export default function (map, canvas, d) {
         const pad = dimensions * 0.1;
 
         ctx.fillRect(
-            (coordinates[0] * dimensions) + pad,
-            (coordinates[1] * dimensions) + pad,
+            (coordinates[0] * dimensions) + pad + 0.5,
+            (coordinates[1] * dimensions) + pad + 0.5,
             dimensions * 0.8,
             dimensions * 0.8
         );

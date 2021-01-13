@@ -3,7 +3,7 @@ import {useState} from 'react';
 export default function (d) {
     const [settings, setSettings] = useState(d);
 
-    const setProperty = (amount, property) => {
+    const setProperty = (property, amount) => {
         switch (property) {
             case "d":
                 setSettings(Object.assign({}, {d: amount}));
