@@ -1,40 +1,38 @@
-import React, {forwardRef, useRef, useImperativeHandle} from 'react';
+import React, {useRef, useEffect} from 'react';
 import draw from './map';
 import drawGrid from './grid';
 
-const Canvas = ({settings, setToken}, ref) => {
+const Canvas = ({map, settings, setToken}) => {
     const canvasRef = useRef();
-    useImperativeHandle(ref, () => ({
-        init: () => {
-            drawGrid(
-                canvasRef.current,
-                settings.d
-            );
-        },
-        update: (map) => {
-            draw(
-                map,
-                canvasRef.current,
-                settings.d
-            );
-        }
-    }));
+
+    const handleSet = (e) => {
+        const rect = canvasRef.current.getBoundingClientRect();
+        const size = Math.floor(canvasRef.current.width / settings.d);
+
+        setToken(
+            Math.floor((e.clientX - rect.left) / size),
+            Math.floor((e.clientY - rect.top) / size)
+        )
+    }
+
+    useEffect(() => {
+        drawGrid(
+            canvasRef.current,
+            settings.d
+        );
+    }, []);
+
+    useEffect(() => {
+        draw(
+            map,
+            canvasRef.current,
+            settings.d
+        );
+    }, [map]);
 
     return (
         <canvas
-            onClick={(e) => {
-                const rect = canvasRef.current.getBoundingClientRect();
-                const size = Math.floor(canvasRef.current.width / settings.d);
-
-                setToken(
-                    e.clientX > 0
-                        ? Math.floor((e.clientX - rect.left) / size)
-                        : 0,
-                    e.clientY > 0
-                        ? Math.floor((e.clientY - rect.top) / size)
-                        : 0
-                )
-            }}
+            onClick={handleSet}
             ref={canvasRef}
             width={600}
             height={600}
@@ -42,4 +40,4 @@ const Canvas = ({settings, setToken}, ref) => {
     )
 }
 
-export default forwardRef(Canvas);
+export default Canvas;
