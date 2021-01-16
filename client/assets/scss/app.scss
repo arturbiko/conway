@@ -12,3 +12,8 @@ body {
 canvas {
   border: 2px solid $brown;
 }
+
+.app-heading {
+  color: $yellow;
+  text-shadow: 2px 2px 2px $orange;
+}

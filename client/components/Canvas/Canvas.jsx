@@ -1,18 +1,19 @@
 import React, {useRef, useEffect} from 'react';
-import drawGrid from './grid';
+import useGrid from './grid';
 import useMap from "../map";
 import useDrawer from "./map";
 import {ANIMATION_PLAYING} from "../animation";
-import {tokenStyle} from "./styles";
+import {gridStyle, tokenStyle} from "./styles";
 
 const Canvas = ({state, dimensions, framerate}) => {
     const canvasRef = useRef();
     const frameRef = useRef();
     const [map, actions] = useMap(canvasRef);
     const draw = useDrawer(tokenStyle());
+    const grid = useGrid(gridStyle())
 
     useEffect(() => {
-        drawGrid(
+        grid(
             canvasRef.current,
             dimensions
         );
@@ -23,7 +24,7 @@ const Canvas = ({state, dimensions, framerate}) => {
     }, [dimensions]);
 
     useEffect(() => {
-        drawGrid(
+        grid(
             canvasRef.current,
             dimensions
         )

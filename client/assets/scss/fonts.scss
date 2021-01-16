@@ -14,20 +14,23 @@
 
 @font-face {
   font-family: 'Rixel';
-  src: url('../fonts/rixel/rixel.woff2') format('woff2'),
-  url('../fonts/rixel/rixel.woff') format('woff'),
-  url('../fonts/rixel/rixel.ttf') format('truetype');
+  src: url('../fonts/rixel/Rixel.eot');
+  src: url('../fonts/rixel/Rixel.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/rixel/Rixel.woff2') format('woff2'),
+  url('../fonts/rixel/Rixel.woff') format('woff'),
+  url('../fonts/rixel/Rixel.ttf') format('truetype'),
+  url('../fonts/rixel/Rixel.svg#Untitled') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 .font-depixel {
-  font-family: depixelklein, sans-serif;
+  font-family: 'depixelklein', sans-serif;
 }
 
 .font-rixel {
-  font-family: Rixel, sans-serif;
+  font-family: 'Rixel', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {

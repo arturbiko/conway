@@ -17,10 +17,10 @@ export default function (tokenStyle) {
                 : tokenStyle.tokenDead;
 
             ctx.fillRect(
-                (coordinates[0] * dimensions) + pad + 0.5,
-                (coordinates[1] * dimensions) + pad + 0.5,
-                dimensions * 0.8,
-                dimensions * 0.8
+                (coordinates[0] * dimensions) + (pad / 2) + 0.5,
+                (coordinates[1] * dimensions) + (pad / 2) + 0.5,
+                dimensions - pad,
+                dimensions - pad
             );
         });
 

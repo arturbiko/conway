@@ -7,6 +7,13 @@ const tokenStyle = () => {
     }
 }
 
+const gridStyle = () => {
+    return {
+        gridBorder: colors.brown
+    }
+}
+
 export {
-    tokenStyle
+    tokenStyle,
+    gridStyle
 }
