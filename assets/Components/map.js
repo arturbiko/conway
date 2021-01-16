@@ -8,10 +8,9 @@ export default function () {
 
     const scale = (d) => {
         const temp = new Map();
-        const ns = parseInt(d);
 
-        for (let y = 0; y < ns; ++y) {
-            for (let x = 0; x < ns; ++x) {
+        for (let y = 0; y < d; ++y) {
+            for (let x = 0; x < d; ++x) {
                 temp.set(`${x}:${y}`, TOKEN_DEAD);
             }
         }
@@ -26,10 +25,10 @@ export default function () {
                 `${x}:${y}`) === TOKEN_ALIVE
                     ? TOKEN_DEAD
                     : TOKEN_ALIVE
-        )))
+        )));
     }
 
-    const checkNeighbours = () => {
+    const update = () => {
         const changes = new Map(map);
 
         map.forEach(((value, key) => {
@@ -83,11 +82,10 @@ export default function () {
 
     return [
         map, {
-            set,
-            scale,
-            checkNeighbours
-        }
-    ]
+        set,
+        scale,
+        update
+    }]
 }
 
 export {

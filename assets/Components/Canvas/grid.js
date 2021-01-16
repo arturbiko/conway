@@ -6,29 +6,22 @@ export default function draw(canvas, fieldAmount) {
     const step = Math.floor(width / fieldAmount);
     const ctx = canvas.getContext('2d');
 
+    ctx.clearRect(0, 0, width, height)
+
+    ctx.beginPath();
     ctx.strokeStyle = '#060310';
     ctx.lineWidth = 1;
 
-    ctx.clearRect(0, 0, width, height)
-    ctx.beginPath();
+    for (let y = step; y < canvas.height; y += step) {
+        for (let x = step; x < canvas.width; x+= step) {
+            ctx.moveTo(x + 0.5, 0.5);
+            ctx.lineTo(x + 0.5, height + 0.5);
+        }
 
-    let x = step;
-    while (x < canvas.width) {
-        ctx.moveTo(x + 0.5, 0.5);
-        ctx.lineTo(x + 0.5, height + 0.5);
-        ctx.stroke();
-
-        x += step;
-    }
-
-    ctx.beginPath();
-
-    let y = step;
-    while (y < canvas.height) {
         ctx.moveTo(0.5, y + 0.5);
         ctx.lineTo(width + 0.5, y + 0.5);
-        ctx.stroke();
-
-        y += step;
     }
+
+    ctx.stroke();
+    ctx.closePath();
 }

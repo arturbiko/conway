@@ -1,6 +1,7 @@
 import React from 'react';
+import {ANIMATION_PLAYING, ANIMATION_STOPPED} from "./animation";
 
-const Control = ({values, setSettings, start}) => (
+const Control = ({values, setSettings, start, stop, state}) => (
     <>
         <div className="form-group" title={values.d}>
             <label htmlFor="dimensions">Dimensions</label>
@@ -12,13 +13,23 @@ const Control = ({values, setSettings, start}) => (
                 step={10}
                 min={10}
                 max={60}
-                onChange={(e) => setSettings("d", e.target.value)}
+                disabled={ANIMATION_PLAYING === state}
+                onChange={(e) => setSettings("d", parseInt(e.target.value))}
             />
         </div>
-        <button className="btn btn-success" onClick={() => {
-            start();
+        <button className={ANIMATION_STOPPED === state ? 'btn btn-success' : 'btn btn-secondary'} onClick={() => {
+            switch (state) {
+                case ANIMATION_PLAYING:
+                    stop();
+                    break;
+                case ANIMATION_STOPPED:
+                    start();
+                    break;
+                default:
+                    break;
+            }
         }}>
-            Step
+            {ANIMATION_STOPPED === state ? 'Start' : 'Stop'}
         </button>
     </>
 );
