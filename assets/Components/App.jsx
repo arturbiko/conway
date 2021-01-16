@@ -5,7 +5,7 @@ import useAnimations from './animation';
 import Control from "./Control";
 
 const App = () => {
-    const [settings, setSettings] = useSettings({d: 10, s: 25});
+    const [settings, setSettings] = useSettings({d: 10, s: 200});
     const [state, start, stop] = useAnimations();
 
     return (

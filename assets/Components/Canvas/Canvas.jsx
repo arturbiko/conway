@@ -58,6 +58,10 @@ const Canvas = ({state, dimensions, framerate}) => {
     }
 
     const handleSet = (e) => {
+        if (ANIMATION_PLAYING === state) {
+            return;
+        }
+
         const rect = canvasRef.current.getBoundingClientRect();
         const size = Math.floor(canvasRef.current.width / dimensions);
 
