@@ -2,7 +2,7 @@
   "name": "conways-game-of-life",
   "version": "1.0.0",
   "description": "Conways Game of Life in React",
-  "main": "assets/app.js",
+  "main": "client/app.js",
   "scripts": {
     "start": "encore dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"

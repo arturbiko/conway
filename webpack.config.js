@@ -9,8 +9,8 @@ Encore
 
     .setPublicPath('/build')
 
-    .addEntry('app', './assets/app.js')
-    .addStyleEntry('style', './assets/app.scss')
+    .addEntry('app', './client/app.js')
+    .addStyleEntry('style', './client/assets/scss/app.scss')
     .splitEntryChunks()
 
     .enableSingleRuntimeChunk()
