@@ -11,6 +11,7 @@ Encore
 
     .addEntry('app', './client/app.js')
     .addStyleEntry('style', './client/assets/scss/app.scss')
+
     .splitEntryChunks()
 
     .enableSingleRuntimeChunk()
