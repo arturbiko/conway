@@ -1,0 +1,22 @@
+@import "colors";
+
+$exportColor: (
+  'dark': $dark,
+  'brown': $brown,
+  'cream': $cream,
+  'white': $white,
+  'red': $red,
+  'green': $green,
+  'field': $field,
+  'forest': $forest,
+  'ice': $ice,
+  'yellow': $yellow,
+  'orange': $orange,
+);
+
+
+:export {
+  @each $key, $value in $exportColor {
+    #{unquote($key)}: $value;
+  }
+}

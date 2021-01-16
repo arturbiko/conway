@@ -1,13 +1,15 @@
 import React, {useRef, useEffect} from 'react';
 import drawGrid from './grid';
 import useMap from "../map";
-import draw from "./map";
+import useDrawer from "./map";
 import {ANIMATION_PLAYING} from "../animation";
+import {tokenStyle} from "./styles";
 
 const Canvas = ({state, dimensions, framerate}) => {
     const canvasRef = useRef();
     const frameRef = useRef();
     const [map, actions] = useMap(canvasRef);
+    const draw = useDrawer(tokenStyle());
 
     useEffect(() => {
         drawGrid(

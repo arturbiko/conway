@@ -1,11 +1,14 @@
 
 @import "~bootstrap/scss/bootstrap";
 @import "fonts";
+@import "colors";
 
 body {
   user-select: none;
+  background: $dark;
+  color: white;
 }
 
 canvas {
-  border: 1px solid #060310;
+  border: 2px solid $brown;
 }

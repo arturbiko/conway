@@ -9,12 +9,12 @@ const App = () => {
     const [state, start, stop] = useAnimations();
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid container-md">
             <div className="row py-2">
-                <div className="col-12 mb-2 col-md-6 mb-md-0 d-flex justify-content-center">
+                <div className="col-12 mb-2 d-flex justify-content-center">
                     <Canvas dimensions={settings.d} framerate={settings.s} state={state} />
                 </div>
-                <div className="col-12 col-md-6">
+                <div className="col-12">
                     <Control
                         values={settings}
                         setSettings={setSettings}
