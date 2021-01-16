@@ -4,7 +4,7 @@ import useMap from "../map";
 import draw from "./map";
 import {ANIMATION_PLAYING} from "../animation";
 
-const Canvas = ({state, settings}) => {
+const Canvas = ({state, dimensions, framerate}) => {
     const canvasRef = useRef();
     const frameRef = useRef();
     const [map, actions] = useMap(canvasRef);
@@ -12,28 +12,26 @@ const Canvas = ({state, settings}) => {
     useEffect(() => {
         drawGrid(
             canvasRef.current,
-            settings.d
+            dimensions
         );
     }, []);
 
     useEffect(() => {
-        actions.scale(settings.d);
-    }, [settings]);
+        actions.scale(dimensions);
+    }, [dimensions]);
 
     useEffect(() => {
         drawGrid(
             canvasRef.current,
-            settings.d
+            dimensions
         )
-    }, [settings.d])
+    }, [dimensions])
 
     useEffect(() => {
-        draw(map, canvasRef.current, settings.d);
+        draw(map, canvasRef.current, dimensions);
 
         if (ANIMATION_PLAYING === state) {
-            frameRef.current = requestAnimationFrame(() => {
-                handleUpdate();
-            });
+            frameRef.current = requestAnimationFrame(time => handleUpdate(time, time - time));
         }
 
         return () => {
@@ -42,17 +40,26 @@ const Canvas = ({state, settings}) => {
         }
     }, [state, map]);
 
-    const handleUpdate = () => {
-        actions.update();
-
+    const handleUpdate = (current, total) => {
         if (ANIMATION_PLAYING === state) {
-            frameRef.current = requestAnimationFrame(handleUpdate);
+            if (total > framerate) {
+                actions.update();
+            }
+
+            frameRef.current = requestAnimationFrame(time => {
+                handleUpdate(
+                    time,
+                    total < framerate
+                        ? total + (time - current)
+                        : 0
+                );
+            });
         }
     }
 
     const handleSet = (e) => {
         const rect = canvasRef.current.getBoundingClientRect();
-        const size = Math.floor(canvasRef.current.width / settings.d);
+        const size = Math.floor(canvasRef.current.width / dimensions);
 
         actions.set(
             Math.floor((e.clientX - rect.left) / size),

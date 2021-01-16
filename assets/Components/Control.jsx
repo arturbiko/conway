@@ -3,6 +3,19 @@ import {ANIMATION_PLAYING, ANIMATION_STOPPED} from "./animation";
 
 const Control = ({values, setSettings, start, stop, state}) => (
     <>
+        <div className="form-group" title={values.s}>
+            <label htmlFor="interval">Interval</label>
+            <input
+                type="range"
+                id="interval"
+                className="form-control-range"
+                value={values.s}
+                step={25}
+                min={25}
+                max={300}
+                onChange={(e) => setSettings("s", parseInt(e.target.value))}
+            />
+        </div>
         <div className="form-group" title={values.d}>
             <label htmlFor="dimensions">Dimensions</label>
             <input

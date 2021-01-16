@@ -6,10 +6,10 @@ export default function (d) {
     const setProperty = (property, amount) => {
         switch (property) {
             case "d":
-                setSettings(Object.assign({}, {d: amount}));
+                setSettings(Object.assign({}, settings, {d: amount}));
                 break;
             case "s":
-                setSettings(Object.assign({}, {s: amount}));
+                setSettings(Object.assign({}, settings, {s: amount}));
                 break;
             default:
                 throw new Error();
