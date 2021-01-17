@@ -7,28 +7,16 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
-const indexOutputConfiguration = Object.assign(
-    {},
-    {template: path.resolve(__dirname + '/index.html')},
-    Encore.isProduction()
-        ? {filename: path.resolve(__dirname + '/public/index.html')}
-        : {}
-);
-
 Encore
-    .setOutputPath('public/build/')
+    .setOutputPath('dist/build')
     .setPublicPath('/build')
 
     .addEntry('app', './client/app.js')
     .addStyleEntry('style', './client/assets/scss/app.scss')
 
-    .addPlugin(new HtmlWebpackPlugin(indexOutputConfiguration))
-
     .splitEntryChunks()
 
     .enableSingleRuntimeChunk()
-
-    .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
 
@@ -42,6 +30,40 @@ Encore
 
     .cleanupOutputBeforeBuild()
 ;
+
+if (Encore.isDevServer()) {
+    Encore
+        .addPlugin(new HtmlWebpackPlugin({
+            template: path.resolve(__dirname + '/src/index.html'),
+        }))
+}
+
+if (Encore.isProduction()) {
+    Encore
+        .setPublicPath('build')
+
+        .cleanupOutputBeforeBuild()
+
+        .disableFontsLoader()
+
+        .addPlugin(new HtmlWebpackPlugin({
+            template: path.resolve(__dirname + '/src/index.html'),
+            filename: path.resolve(__dirname + '/dist/index.html')
+        }))
+
+        .addLoader({
+            test: /\.(ttf|eot|woff2?|otf)$/,
+            use: {
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[hash].[ext]',
+                    outputPath: 'fonts',
+                    publicPath: 'fonts',
+                    limit: 10000
+                }
+            }
+        },)
+}
 
 const config = Encore.getWebpackConfig();
 

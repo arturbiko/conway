@@ -1,12 +1,12 @@
 
 @font-face {
-  font-family: 'depixelklein';
-  src: url('../fonts/depixel/depixelklein-webfont.eot');
-  src: url('../fonts/depixel/depixelklein-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/depixel/depixelklein-webfont.woff2') format('woff2'),
-  url('../fonts/depixel/depixelklein-webfont.woff') format('woff'),
-  url('../fonts/depixel/depixelklein-webfont.ttf') format('truetype'),
-  url('../fonts/depixel/depixelklein-webfont.svg#depixelklein') format('svg');
+  font-family: 'Depixel';
+  src: url('../fonts/depixel/depixelklein.eot');
+  src: url('../fonts/depixel/depixelklein.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/depixel/depixelklein.woff2') format('woff2'),
+  url('../fonts/depixel/depixelklein.woff') format('woff'),
+  url('../fonts/depixel/depixelklein.ttf') format('truetype'),
+  url('../fonts/depixel/depixelklein.svg#depixelklein') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,7 @@
 }
 
 .font-depixel {
-  font-family: 'depixelklein', sans-serif;
+  font-family: 'Depixel', sans-serif;
 }
 
 .font-rixel {
@@ -35,7 +35,6 @@
 
 h1, h2, h3, h4, h5 {
   margin: 3rem 0 1.38rem;
-  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 1.3;
 }
