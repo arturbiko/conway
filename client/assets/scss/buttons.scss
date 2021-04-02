@@ -1,0 +1,11 @@
+@import "export";
+
+@each $key, $value in $exportColor {
+  .btn-#{$key} {
+    background-color: $value;
+
+    &:focus, &:hover {
+      background-color: darken($value, 20%)
+    }
+  }
+}

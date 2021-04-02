@@ -2,6 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import "fonts";
 @import "colors";
+@import "buttons";
 
 body {
   user-select: none;
@@ -21,4 +22,9 @@ canvas {
 .app-heading {
   color: $yellow;
   text-shadow: 2px 2px 2px $orange;
+}
+
+svg {
+  height: 16px;
+  width: 16px;
 }

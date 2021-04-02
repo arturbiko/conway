@@ -3,11 +3,8 @@ import Canvas from "../Canvas";
 import useDrawer from "../map";
 import {tokenStyle} from "../styles";
 import {ANIMATION_PLAYING} from "../../animation";
-import useMap from "../../map";
 
-const Board = ({animationState, frameRate, dimensions}) => {
-    const [map, actions] = useMap();
-
+const Board = ({animationState, frameRate, dimensions, map, actions}) => {
     const canvasRef = useRef();
     const frameRef = useRef();
 
