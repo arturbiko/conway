@@ -13,12 +13,12 @@ export default function draw(style) {
         ctx.strokeStyle = style.gridBorder;
         ctx.lineWidth = 1;
 
-        for (let y = step; y < canvas.height; y += step) {
-            for (let x = step; x < canvas.width; x+= step) {
-                ctx.moveTo(x + 0.5, 0.5);
-                ctx.lineTo(x + 0.5, height + 0.5);
-            }
+        for (let x = step; x < canvas.width; x+= step) {
+            ctx.moveTo(x + 0.5, 0.5);
+            ctx.lineTo(x + 0.5, height + 0.5);
+        }
 
+        for (let y = step; y < canvas.height; y += step) {
             ctx.moveTo(0.5, y + 0.5);
             ctx.lineTo(width + 0.5, y + 0.5);
         }

@@ -1,8 +1,9 @@
 import React from 'react';
-import Canvas from "./Canvas/Canvas";
 import useSettings from './settings';
 import useAnimations from './animation';
 import Control from "./Control";
+import Board from "./Canvas/Layer/Board";
+import Grid from "./Canvas/Layer/Grid";
 
 const App = () => {
     const [settings, setSettings] = useSettings({d: 30, s: 200});
@@ -17,9 +18,24 @@ const App = () => {
                 </div>
             </div>
             <div className="row py-2">
-                <div className="col-12 mb-2 d-flex justify-content-center">
-                    <Canvas dimensions={settings.d} framerate={settings.s} state={state} />
+                <div className="col-12 d-flex flex-row justify-content-center">
+                    <div className="position-relative" style={{
+                        height: 600,
+                        width: 600
+                    }}>
+                        <Grid
+                            dimensions={settings.d}
+                            animationState={state}
+                        />
+                        <Board
+                            dimensions={settings.d}
+                            frameRate={settings.s}
+                            animationState={state}
+                        />
+                    </div>
                 </div>
+            </div>
+            <div className="row py-2">
                 <div className="col-12">
                     <Control
                         values={settings}

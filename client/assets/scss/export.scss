@@ -14,7 +14,6 @@ $exportColor: (
   'orange': $orange,
 );
 
-
 :export {
   @each $key, $value in $exportColor {
     #{unquote($key)}: $value;

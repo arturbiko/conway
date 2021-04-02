@@ -39,7 +39,7 @@ export default function () {
             let neighboursAlive = 0;
 
             for (let ty = y - 1; ty <= y + 1; ++ty) {
-                if (ty  < 0) {
+                if (ty < 0) {
                     continue;
                 }
 
