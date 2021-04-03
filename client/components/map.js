@@ -1,10 +1,32 @@
 import React, {useState} from 'react';
+import SimplexNoise from 'simplex-noise';
+import {getRandomNumber} from "./util";
 
 const TOKEN_ALIVE = '#';
 const TOKEN_DEAD = '.';
 
 export default function () {
     const [map, setMap] = useState(new Map());
+
+    const shuffle = (d) => {
+        const temp = new Map();
+        const simplex = new SimplexNoise(getRandomNumber(1, 1024));
+
+        for (let y = 0; y < d; ++y) {
+            for (let x = 0; x < d; ++x) {
+                const val = Math.abs(simplex.noise2D(x * 2,y * 2)) * 10;
+
+                temp.set(`${x}:${y}`, val >= 0.4  ? TOKEN_DEAD : TOKEN_ALIVE);
+            }
+        }
+
+        setMap(temp);
+    }
+
+    const clear = () => {
+        const temp = new Map();
+        setMap(temp);
+    }
 
     const scale = (d) => {
         const temp = new Map();
@@ -84,7 +106,9 @@ export default function () {
         map, {
         set,
         scale,
-        update
+        update,
+        shuffle,
+        clear
     }]
 }
 

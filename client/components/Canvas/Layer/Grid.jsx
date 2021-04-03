@@ -1,13 +1,13 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import Canvas from "../Canvas";
 import useGrid from "../grid";
-import {gridStyle, tokenStyle} from "../styles";
+import {gridStyle} from "../styles";
+import {Context} from "../../Map/Provider";
 
 const Grid = ({dimensions}) => {
+    const {actions} = useContext(Context);
+
     const canvasRef = useRef();
-
-    const style = tokenStyle();
-
     const draw = useGrid(gridStyle())
 
     useEffect(() => {
@@ -21,7 +21,11 @@ const Grid = ({dimensions}) => {
         draw(
             canvasRef.current,
             dimensions
-        )
+        );
+    }, [dimensions]);
+
+    useEffect(() => {
+        actions.scale(dimensions);
     }, [dimensions]);
 
     return (

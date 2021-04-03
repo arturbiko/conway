@@ -7,7 +7,7 @@ export default function draw(style) {
         const step = Math.floor(width / fieldAmount);
         const ctx = canvas.getContext('2d');
 
-        ctx.clearRect(0, 0, width, height)
+        ctx.clearRect(0, 0, width, height);
 
         ctx.beginPath();
         ctx.strokeStyle = style.gridBorder;

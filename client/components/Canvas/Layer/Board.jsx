@@ -1,27 +1,25 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import Canvas from "../Canvas";
 import useDrawer from "../map";
 import {tokenStyle} from "../styles";
 import {ANIMATION_PLAYING} from "../../animation";
+import {Context} from "../../Map/Provider";
 
-const Board = ({animationState, frameRate, dimensions, map, actions}) => {
+const Board = ({animationState, frameRate, dimensions}) => {
+    const {map, actions} = useContext(Context);
+
     const canvasRef = useRef();
     const frameRef = useRef();
 
     const draw = useDrawer(tokenStyle());
 
     useEffect(() => {
-        draw(map, canvasRef.current, dimensions);
+        actions.shuffle(dimensions);
     }, []);
 
     useEffect(() => {
         draw(map, canvasRef.current, dimensions);
     }, [map]);
-
-    useEffect(() => {
-        actions.scale(dimensions);
-        draw(map, canvasRef.current, dimensions);
-    }, [dimensions]);
 
     useEffect(() => {
         if (ANIMATION_PLAYING === animationState) {
