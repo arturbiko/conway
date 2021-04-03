@@ -1,9 +1,9 @@
 {
-  "build/0.d376160d.js": "build/0.d376160d.js",
+  "build/0.9eb7fe3d.js": "build/0.9eb7fe3d.js",
   "build/app.css": "build/app.99c21d8d.css",
-  "build/app.js": "build/app.bb1edce3.js",
+  "build/app.js": "build/app.0c1eb8d2.js",
   "build/runtime.js": "build/runtime.4caecefa.js",
-  "build/style.css": "build/style.3f013622.css",
+  "build/style.css": "build/style.c2aac07b.css",
   "build/../index.html": "build/../index.html",
   "build/fonts/Rixel.eot": "build/fonts/Rixel.08aa1442fe70f0a29177e351c20b9395.eot",
   "build/fonts/Rixel.ttf": "build/fonts/Rixel.c0bd6e23e31592c8f56037dc6970eeec.ttf",
@@ -12,5 +12,6 @@
   "build/fonts/depixelklein.eot": "build/fonts/depixelklein.f5d25e101d16328bd24319ee64f9a7b8.eot",
   "build/fonts/depixelklein.ttf": "build/fonts/depixelklein.fd742c77d5ac718df2bdab04df5e1ab5.ttf",
   "build/images/Rixel.svg": "build/images/Rixel.ebf879b9.svg",
-  "build/images/depixelklein.svg": "build/images/depixelklein.d2d30f1d.svg"
+  "build/images/depixelklein.svg": "build/images/depixelklein.d2d30f1d.svg",
+  "build/images/icons.4b0bfcc7.svg": "build/images/icons.4b0bfcc7.svg"
 }
